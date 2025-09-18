@@ -6,80 +6,99 @@
   <title>Azure Web App - Enhanced</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .nav-link {
-      transition: color 0.3s ease;
+    body.light-mode {
+      background-color: #e5e7eb;
+      color: #111827;
     }
-    .nav-link:hover {
-      color: #14b8a6;
+    body.dark-mode {
+      background-color: #1e3a8a;
+      color: #e5e7eb;
     }
-    .cta-button {
-      transition: background-color 0.3s ease, transform 0.2s ease;
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      background: linear-gradient(145deg, #ffffff, #f0f9ff);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
     }
-    .cta-button:hover {
-      transform: scale(1.05);
-      background-color: #0d9488;
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 20px rgba(0, 120, 215, 0.2);
+      background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
     }
-    .main-title {
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    .dark-mode .feature-card {
+      background: linear-gradient(145deg, #1e40af, #1e3a8a);
+    }
+    .dark-mode .feature-card:hover {
+      background: linear-gradient(145deg, #1e40af, #2563eb);
+      box-shadow: 0 12px 20px rgba(0, 120, 215, 0.4);
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #0078d4, #00bcf2);
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
-  <header class="bg-teal-700 text-white py-6 sticky top-0 z-10 shadow-lg">
-    <div class="container mx-auto px-4 flex flex-col items-center text-center">
-      <div>
-        <h1 class="main-title text-4xl md:text-5xl font-extrabold text-blue-600">Azure Web App</h1>
-        <p class="text-base mt-2">Build, deploy, scale seamlessly</p>
-      </div>
-      <nav class="mt-4 space-x-4">
-        <a href="#features" class="nav-link text-white hover:text-teal-200">Features</a>
-        <a href="#get-started" class="nav-link text-white hover:text-teal-200">Get Started</a>
-        <button id="theme-toggle" class="bg-white text-teal-700 px-3 py-1 rounded-md hover:bg-gray-100 transition">
-          Toggle Dark Mode
-        </button>
-      </nav>
+<body class="light-mode min-h-screen flex flex-col">
+  <header class="bg-blue-800 text-white py-4 shadow-md">
+    <div class="container mx-auto px-4">
+      <h1 class="text-3xl font-bold">Azure Web App</h1>
+      <p class="mt-2 text-lg">Build, deploy, and scale web applications with ease</p>
+      <button id="theme-toggle" class="mt-4 bg-white text-blue-800 px-4 py-2 rounded-md hover:bg-gray-100 transition">
+        Toggle Dark Mode
+      </button>
     </div>
   </header>
-
   <main class="container mx-auto px-4 py-8 flex-grow">
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-teal-900 mb-4">What is Azure Web App?</h2>
-      <p class="text-teal-700 leading-relaxed">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">What is Azure Web App?</h2>
+      <p class="text-gray-700 dark:text-gray-200 leading-relaxed">
         Azure Web Apps is a fully managed platform-as-a-service (PaaS) offered by Microsoft Azure, enabling developers to build, deploy, and scale web applications quickly and efficiently. It supports multiple programming languages, including Python, Node.js, .NET, Java, and PHP, and integrates seamlessly with DevOps tools for CI/CD pipelines.
       </p>
     </section>
-
-    <section id="features" class="mb-12">
-      <h2 class="text-2xl font-semibold text-teal-900 mb-4">Key Features</h2>
-      <ul class="list-disc list-inside text-teal-700 space-y-2">
-        <li><span class="font-bold">Scalability:</span> Easily scale your application up or down based on demand with Azure's auto-scaling capabilities.</li>
-        <li><span class="font-bold">Deployment Options:</span> Deploy via Git, FTP, or integrate with Azure DevOps, GitHub Actions, or other CI/CD tools.</li>
-        <li><span class="font-bold">Custom Domains & SSL:</span> Add custom domains and secure your app with free or managed SSL certificates.</li>
-      </ul>
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Key Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="feature-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Scalability</h3>
+          <p class="text-gray-600 dark:text-gray-200 mt-2">Easily scale your application up or down based on demand with Azure's auto-scaling capabilities.</p>
+        </div>
+        <div class="feature-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Deployment Options</h3>
+          <p class="text-gray-600 dark:text-gray-200 mt-2">Deploy via Git, FTP, or integrate with Azure DevOps, GitHub Actions, or other CI/CD tools.</p>
+        </div>
+        <div class="feature-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100">Custom Domains & SSL</h3>
+          <p class="text-gray-600 dark:text-gray-200 mt-2">Add custom domains and secure your app with free or managed SSL certificates.</p>
+        </div>
+      </div>
     </section>
-
-    <section id="get-started" class="mb-12">
-      <h2 class="text-2xl font-semibold text-teal-900 mb-4">Get Started</h2>
-      <p class="text-teal-700 leading-relaxed">
-        Start building your web app today with Azure's free tier or explore advanced features with a paid subscription. Visit the <a href="https://azure.microsoft.com/en-us/services/app-service/web/" class="text-teal-600 hover:underline">Azure Web Apps documentation</a> for tutorials and guides.
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Get Started</h2>
+      <p class="text-gray-700 dark:text-gray-200 leading-relaxed">
+        Start building your web app today with Azure's free tier or explore advanced features with a paid subscription. Visit the <a href="https://azure.microsoft.com/en-us/services/app-service/web/" class="text-blue-600 hover:underline">Azure Web Apps documentation</a> for tutorials and guides.
       </p>
-      <a href="https://azure.microsoft.com/en-us/free/" class="cta-button inline-block mt-4 bg-teal-600 text-white px-6 py-3 rounded-md">Try Azure Free</a>
+      <a href="https://azure.microsoft.com/en-us/free/" class="inline-block mt-4 bg-blue-700 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition">Try Azure Free</a>
     </section>
   </main>
-
-  <footer class="bg-teal-800 text-white py-4">
+  <footer class="bg-blue-900 text-white py-4">
     <div class="container mx-auto px-4 text-center">
       <p>&copy; 2025 Azure Web App. All rights reserved.</p>
-      <p class="mt-2">Powered by <a href="https://azure.microsoft.com/" class="text-teal-300 hover:underline">Microsoft Azure</a></p>
+      <p class="mt-2">Powered by <a href="https://azure.microsoft.com/" class="text-blue-300 hover:underline">Microsoft Azure</a></p>
     </div>
   </footer>
-
   <script>
     const toggleButton = document.getElementById('theme-toggle');
     const body = document.body;
-
     toggleButton.addEventListener('click', () => {
-      toggleButton.textContent = toggleButton.textContent === 'Toggle Dark Mode' ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+      body.classList.toggle('light-mode');
+      body.classList.toggle('dark-mode');
+      toggleButton.textContent = body.classList.contains('dark-mode') ? 'Toggle Light Mode' : 'Toggle Dark Mode';
     });
   </script>
 </body>
